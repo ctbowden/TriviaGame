@@ -1,0 +1,39 @@
+html {
+	background: black;
+	max-width: 800px;
+	align-content: center;
+/*	margin-left: 25%;*/
+	/*margin-right: 33%;*/
+}
+
+.page-header {
+	background: black;
+	background-image: url("../images/music.jpg");
+}
+.neon {
+	color: #ff0099;
+}
+#audiowide {
+	font-family: 'Audiowide', cursive;
+	font-size: 80px;
+}
+#roboto {
+	font-family: 'Roboto', sans-serif;
+}
+body {
+	background-image: url("../images/10.jpg");
+	background-position: center;
+}
+
+.jumbotron {
+	max-width: 600px;
+	margin: 75px;
+	text-align: center;
+}
+footer {
+	background: #6e0dd0;
+	color: white;
+	text-align: center;
+	margin-top: 5px;
+	border: 1px white solid;
+}
