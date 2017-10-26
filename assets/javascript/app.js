@@ -5,109 +5,30 @@
 
 // Variables
 // MusicTrivia Questions based on Rock n Roll Hall of Fame 2018 Inductees
-var musicTrivia = {
-	q1: {
-		question: "The pencil-sketch animation technique used in the A-ha video Take On Me was known as what?",
-		answerChoices: [
-			{
-				choice: "Onion Skinning",
-				value: false
-			},
-			{
-				choice: "Still Motion",
-				value: false
-			},
-			{
-				choice: "Pinscreen",
-				value: false
-			},
-			{
-				choice: "Rotoscoping",
-				value: true
-			}]
-	},
-	q2: {
-		question: "The pencil-sketch animation technique used in the A-ha video Take On Me was known as what?",
-		answerChoices: [
-			{
-				choice: "Onion Skinning",
-				value: false
-			},
-			{
-				choice: "Still Motion",
-				value: false
-			},
-			{
-				choice: "Pinscreen",
-				value: false
-			},
-			{
-				choice: "Rotoscoping",
-				value: true
-			}]
-	},
-	q3: {
-		question: "The pencil-sketch animation technique used in the A-ha video Take On Me was known as what?",
-		answerChoices: [
-			{
-				choice: "Onion Skinning",
-				value: false
-			},
-			{
-				choice: "Still Motion",
-				value: false
-			},
-			{
-				choice: "Pinscreen",
-				value: false
-			},
-			{
-				choice: "Rotoscoping",
-				value: true
-			}]
-	},
-	q4: {
-		question: "The pencil-sketch animation technique used in the A-ha video Take On Me was known as what?",
-		answerChoices: [
-			{
-				choice: "Onion Skinning",
-				value: false
-			},
-			{
-				choice: "Still Motion",
-				value: false
-			},
-			{
-				choice: "Pinscreen",
-				value: false
-			},
-			{
-				choice: "Rotoscoping",
-				value: true
-			}]
-	},
-	q5: {
-		question: "The pencil-sketch animation technique used in the A-ha video Take On Me was known as what?",
-		answerChoices: [
-			{
-				choice: "Onion Skinning",
-				value: false
-			},
-			{
-				choice: "Still Motion",
-				value: false
-			},
-			{
-				choice: "Pinscreen",
-				value: false
-			},
-			{
-				choice: "Rotoscoping",
-				value: true
-			}]
-	},
-};
 
+var triviaQuestions = [
+	{
+		question: "First nominated in 2011, this band is most for hits like 'Living on a Prayer'?",
+		choices: ["Bon Jovi", "The Cars", "J. Geils Band", "Depeche Mode"],
+		answer: "Bon Jovi"
+	}, {
+		question: "You might think this band is already in the Rock Hall of Fame, but will 2018 be their Magic year?",
+		choices: ["Bon Jovi", "The Cars", "J. Geils Band", "Depeche Mode"],
+		answer: "The Cars"
+	}, {
+		question: "This artist's music not only influenced a younger generation, but also well established artists like Michael Jackson who cut 'Bad' after meeting him in person.",
+		choices: ["Bon Jovi", "Rick James", "Judas Priest", "LL Cool J"],
+		answer: "LL Cool J"
+	}, {
+		question: "It would be a sweet dream indeed if this duo were to make it into the Rock Hall on their first attempt",
+		choices: ["Hall & Oates", "Eurythmics", "Outkast", "Daft Punk"],
+		answer: "Eurythmics"
+	}, {
+		question: "Jeff Beck, Jimmy Page, Eric Clapton, Jimi Hedrix and many more cite this nominee as a huge influence thanks to his track 'Rumble'?",
+		choices: ["Angus Young", "Slash", "Fats Domino", "Link Wray"],
+		answer: "Link Wray"
+	}
+];
 
 
 var correct = 0;
@@ -115,24 +36,34 @@ var wrong = 0;
 var unanswered = 0;
 var timer = 30;
 var intervalId;
+var index = 0;
 
 $(document).ready(function() {
 //This Code starts the Game when user clicks
 	$("#startgame").on("click", function() {
-		letsPlay();
+		runTime();
+		quizTime();
+
 	});	
 });
 
 
+function quizTime(index) {
 
-// Function to initialize gameplay
-function letsPlay() {
-	$("#question").html("<h1>" +musicTrivia.q1.question + "</h1>");
-	$("#Achoice").html("<h2>" + musicTrivia.q1.answerChoices[0].choice + "</h2>");
-	$("#Bchoice").html("<h2>" + musicTrivia.q1.answerChoices[1].choice + "</h2>");
-	$("#Cchoice").html("<h2>" + musicTrivia.q1.answerChoices[2].choice + "</h2>");
-	$("#Dchoice").html("<h2>" + musicTrivia.q1.answerChoices[3].choice + "</h2>");
+	var header = triviaQuestions[index].question[index];
+	$("#quiz").html("<h2>" + header + "</h2>");
+
+	// var question = $("<h3>").append(triviaQuestions[index].question);
+	// $("#quiz").append(question);
+
+	// var answers = $("<p>").append(triviaQuestions[index].choices);
+	// $("#quiz").append(answers);
+
+	index++;
+
 }
+
+
 
 
 // Functions to Make the Countdown Clock Work

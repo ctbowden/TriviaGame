@@ -2,8 +2,11 @@ html {
 	background: black;
 	max-width: 800px;
 	align-content: center;
-/*	margin-left: 25%;*/
-	/*margin-right: 33%;*/
+	margin-left: 25%;
+	margin-right: 33%;
+	background-image: url("../images/rockhall.jpg");
+	/*background-size: cover;*/
+	background-position: center;
 }
 
 .page-header {
@@ -15,14 +18,13 @@ html {
 }
 #audiowide {
 	font-family: 'Audiowide', cursive;
-	font-size: 80px;
+	font-size: 25px;
 }
 #roboto {
 	font-family: 'Roboto', sans-serif;
 }
 body {
-	background-image: url("../images/10.jpg");
-	background-position: center;
+
 }
 
 .jumbotron {
@@ -30,8 +32,9 @@ body {
 	margin: 75px;
 	text-align: center;
 }
+
 footer {
-	background: #6e0dd0;
+	background: black;
 	color: white;
 	text-align: center;
 	margin-top: 5px;
