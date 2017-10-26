@@ -2,57 +2,109 @@
 // Week 5 UNC Coding Camp
 // By Charles Bowden
 
+
 // Variables
+// MusicTrivia Questions based on Rock n Roll Hall of Fame 2018 Inductees
 var musicTrivia = {
 	q1: {
-		question: "Which Duran Duran song opened with a sample of laughter from the keyboardist's girlfriend?",
+		question: "The pencil-sketch animation technique used in the A-ha video Take On Me was known as what?",
 		answerChoices: [
-			"A. Is there something I should know?",
-			"B. Hungry Like the Wolf",
-			"C. Girls on Film",
-			"D. Rio"
-		],
-		correctChoice: "B"
+			{
+				choice: "Onion Skinning",
+				value: false
+			},
+			{
+				choice: "Still Motion",
+				value: false
+			},
+			{
+				choice: "Pinscreen",
+				value: false
+			},
+			{
+				choice: "Rotoscoping",
+				value: true
+			}]
 	},
 	q2: {
 		question: "The pencil-sketch animation technique used in the A-ha video Take On Me was known as what?",
-		answerChoices: {
-			A: "Onion Skinning",
-			B: "Still Motion",
-			C: "Pinscreen",
-			D: "Rotoscoping",
-		},
-		correctChoice: "D"
+		answerChoices: [
+			{
+				choice: "Onion Skinning",
+				value: false
+			},
+			{
+				choice: "Still Motion",
+				value: false
+			},
+			{
+				choice: "Pinscreen",
+				value: false
+			},
+			{
+				choice: "Rotoscoping",
+				value: true
+			}]
 	},
 	q3: {
-		question: "Which one of these songs by The Police did not chart in the 80s?",
-		answerChoices: {
-			A: "Don't Stand So Close to Me",
-			B: "Every Breathe You Take",
-			C: "Walking on the Moon",
-			D: "Wrapped Around Your Finger",
-		},
-		correctChoice: "C"
+		question: "The pencil-sketch animation technique used in the A-ha video Take On Me was known as what?",
+		answerChoices: [
+			{
+				choice: "Onion Skinning",
+				value: false
+			},
+			{
+				choice: "Still Motion",
+				value: false
+			},
+			{
+				choice: "Pinscreen",
+				value: false
+			},
+			{
+				choice: "Rotoscoping",
+				value: true
+			}]
 	},
 	q4: {
-		question: "'Need You Tonight' was released by which rock band?",
-		answerChoices: {
-			A: "The Cure",
-			B: "Metallica",
-			C: "INXS",
-			D: "Aerosmith",
-		},
-		correctChoice: "C"
+		question: "The pencil-sketch animation technique used in the A-ha video Take On Me was known as what?",
+		answerChoices: [
+			{
+				choice: "Onion Skinning",
+				value: false
+			},
+			{
+				choice: "Still Motion",
+				value: false
+			},
+			{
+				choice: "Pinscreen",
+				value: false
+			},
+			{
+				choice: "Rotoscoping",
+				value: true
+			}]
 	},
 	q5: {
-		question: "Which of the following bands is responsible for the hit, 'Breaking the Law'?",
-		answerChoices: {
-			A: "Rage Against the Machine",
-			B: "Motorhead",
-			C: "Judas Priest",
-			D: "Slipknot",
-		},
-		correctChoice: "C"
+		question: "The pencil-sketch animation technique used in the A-ha video Take On Me was known as what?",
+		answerChoices: [
+			{
+				choice: "Onion Skinning",
+				value: false
+			},
+			{
+				choice: "Still Motion",
+				value: false
+			},
+			{
+				choice: "Pinscreen",
+				value: false
+			},
+			{
+				choice: "Rotoscoping",
+				value: true
+			}]
 	},
 };
 
@@ -64,40 +116,57 @@ var unanswered = 0;
 var timer = 30;
 var intervalId;
 
+$(document).ready(function() {
+//This Code starts the Game when user clicks
+	$("#startgame").on("click", function() {
+		letsPlay();
+	});	
+});
 
-//code starts on page load
-window.onload = function() {
 
-	runTime();
 
+// Function to initialize gameplay
+function letsPlay() {
+	$("#question").html("<h1>" +musicTrivia.q1.question + "</h1>");
+	$("#Achoice").html("<h2>" + musicTrivia.q1.answerChoices[0].choice + "</h2>");
+	$("#Bchoice").html("<h2>" + musicTrivia.q1.answerChoices[1].choice + "</h2>");
+	$("#Cchoice").html("<h2>" + musicTrivia.q1.answerChoices[2].choice + "</h2>");
+	$("#Dchoice").html("<h2>" + musicTrivia.q1.answerChoices[3].choice + "</h2>");
 }
 
+
+// Functions to Make the Countdown Clock Work
+// Function to Begin Countdown by running the Countdown Function once each second
 function runTime() {
 	intervalId = setInterval(countdown, 1000);
 }
 
+// Function to provide countdown clock to trivia page 
 function countdown() {
 	//decrease timer
 	timer--;
-	
+	// log to see what's wrong
+	console.log(timer);
 	// show timer on page
-	$("#timer").html("<h2>" + timer + "</h2>");
-	
+	$("#clock").html("<h2>" + timer + "</h2>");
 	//stop function
 	if (timer === 0) {
 		// Run Times Up!
 		timesUp();
 	}
-
-};
+}
 
 function timesUp() {
+	// Stops the Countdown
+	stopClock();
 	//Sorry Times Up Screen
 	alert("Times Up!");
 	//Load Next Question Call
 
-};
-
-function letsPlay() {
-
 }
+function stopClock() {
+	// clears the intervalID and stops the countdown
+	clearInterval(intervalId);
+}
+
+
