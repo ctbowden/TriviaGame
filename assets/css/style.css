@@ -40,3 +40,12 @@ footer {
 	margin-top: 5px;
 	border: 1px white solid;
 }
+.answers {
+	font-size: 24px;
+	display: block;
+	margin: 10px;
+
+}
+#onLoss {
+	max-width: 500px;
+}

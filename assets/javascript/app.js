@@ -34,42 +34,59 @@ var triviaQuestions = [
 var correct = 0;
 var wrong = 0;
 var unanswered = 0;
-var timer = 30;
+var timer;
 var intervalId;
 var index = 0;
 
 $(document).ready(function() {
 //This Code starts the Game when user clicks
 	$("#startgame").on("click", function() {
-		runTime();
-		quizTime();
+		buildQuizBoard();
+
+
 
 	});	
 });
 
 
-function quizTime(index) {
-
-	var header = triviaQuestions[index].question[index];
-	$("#quiz").html("<h2>" + header + "</h2>");
-
-	// var question = $("<h3>").append(triviaQuestions[index].question);
-	// $("#quiz").append(question);
-
-	// var answers = $("<p>").append(triviaQuestions[index].choices);
-	// $("#quiz").append(answers);
-
-	index++;
-
+function buildQuizBoard() {
+	// Clear Timers
+	stopClock();
+	// Clear the Quiz Div Area
+	$("#quiz").empty();
+	// Build the Question Div
+	$("#quiz").html("<h1> " + triviaQuestions[index].question);
+	// Build Answer Choices
+	for (var i = 0; i < 4; i++) {
+		
+		// Generate buttons for Answer Choices
+		var ans = $("<button>");
+		ans.addClass("answers")
+		// add ID = String of name of answer choice
+		ans.attr("name", triviaQuestions[index].choices[i]);
+		//Giving button text
+		ans.text(triviaQuestions[index].choices[i]);
+		// Insert into HTML
+		$("#quiz").append(ans)
+	}
+	//enable the buttons
+	gameLogic();
+	//start the timer
+	runTime();
 }
-
 
 
 
 // Functions to Make the Countdown Clock Work
 // Function to Begin Countdown by running the Countdown Function once each second
 function runTime() {
+	timer = 30;
 	intervalId = setInterval(countdown, 1000);
+}
+
+function pause() {
+	timer = 3;
+	intervalId = setInterval(buildQuizBoard, 1000)
 }
 
 // Function to provide countdown clock to trivia page 
@@ -82,7 +99,6 @@ function countdown() {
 	$("#clock").html("<h2>" + timer + "</h2>");
 	//stop function
 	if (timer === 0) {
-		// Run Times Up!
 		timesUp();
 	}
 }
@@ -90,14 +106,83 @@ function countdown() {
 function timesUp() {
 	// Stops the Countdown
 	stopClock();
+	//Empty the Div
+	$("#quiz").empty();
 	//Sorry Times Up Screen
-	alert("Times Up!");
-	//Load Next Question Call
-
+	$("#quiz").append('<img id="onLoss" src="assets/images/maxresdefault.jpg">');
+	// Increase the Unanswered Questions total
+	unanswered++;
+	// Call for the Next Question
+	nextQuestion();
 }
+
 function stopClock() {
 	// clears the intervalID and stops the countdown
 	clearInterval(intervalId);
 }
 
+function nextQuestion() {
+	//increase the index
+	index++;
+	// pausing before loading next question
+	setTimeout(function() {
+		//determining whether to load next question or score
+		if (index < triviaQuestions.length) {
+			// If more questions exist
+			buildQuizBoard();
+		} else {
+			results();
+		}
+	}, 5000);
+}
 
+// Winner!
+function winner() {
+	//Increase Correct
+	correct++;
+	//Empty the Div
+	$("#quiz").empty();
+	//Sorry Times Up Screen
+	$("#quiz").append("<h1>  Winner </h1>");
+	//Call for Next Question
+	nextQuestion();
+}
+
+// Loser!
+function loser() {
+	//Increase Wrong
+	wrong++;
+	//Empty the Div
+	$("#quiz").empty();
+	//Sorry Times Up Screen
+	$("#quiz").append("<h1>  Loser </h1>");
+	//Call for Next Question
+	nextQuestion();
+}
+
+function gameLogic() {
+	// Game Logic
+	$("button").on("click", function(event) {
+	var userChoice = $(this).attr("name");
+	if (userChoice === triviaQuestions[index].answer) {
+		winner();
+		} else {
+		loser();
+		}
+	});
+}
+
+function results() {
+	stopClock();
+	//Empty the Div
+	$("#quiz").empty();
+	var total = index + 1;
+	//Number of Questions
+	$("#quiz").append("<h2>Total Number of Questions:  " + total + "</h2>");
+	//Number of Questions Correct
+	$("#quiz").append("<h2>Correct Answers:  " + correct + "</h2>");
+	//Number of Questions Wrong
+	$("#quiz").append("<h2>Wrong Answers:  " + wrong + "</h2>");
+	//Number of Questions Unanswered
+	$("#quiz").append("<h2>Unanswered Questions:  " + correct + "</h2>");
+}
