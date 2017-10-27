@@ -8,7 +8,7 @@
 
 var triviaQuestions = [
 	{
-		question: "First nominated in 2011, this band is most for hits like 'Living on a Prayer'?",
+		question: "First nominated in 2011, this band is most known for hits like 'Living on a Prayer'.",
 		choices: ["Bon Jovi", "The Cars", "J. Geils Band", "Depeche Mode"],
 		answer: "Bon Jovi",
 		picture: '<img class="bandpic" src="assets/images/bonjovi.jpg">'
@@ -55,8 +55,6 @@ $(document).ready(function() {
 
 
 function buildQuizBoard() {
-	// Clear Timers
-	stopClock();
 	// Clear the Quiz Div Area
 	$("#quiz").empty();
 	// Build the Question Div
@@ -115,6 +113,8 @@ function timesUp() {
 	$("#quiz").empty();
 	//Sorry Times Up Screen
 	$("#quiz").append('<img id="onLoss" src="assets/images/maxresdefault.jpg">');
+	// Prototype Times up
+	$("#quiz").append('<img src="https://media.giphy.com/media/2DpXJzoZ14aVW/giphy.gif">')
 	// Increase the Unanswered Questions total
 	unanswered++;
 	// Call for the Next Question
@@ -138,11 +138,13 @@ function nextQuestion() {
 		} else {
 			results();
 		}
-	}, 5000);
+	}, 3000);
 }
 
 // Winner!
 function winner() {
+	// stop the timer
+	stopClock();
 	//Increase Correct
 	correct++;
 	//Empty the Div
@@ -159,6 +161,8 @@ function winner() {
 
 // Loser!
 function loser() {
+	// stop the timer
+	stopClock();
 	//Increase Wrong
 	wrong++;
 	//Empty the Div
