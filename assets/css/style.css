@@ -23,9 +23,6 @@ html {
 #roboto {
 	font-family: 'Roboto', sans-serif;
 }
-body {
-
-}
 
 .jumbotron {
 	max-width: 600px;
@@ -52,4 +49,15 @@ footer {
 
 .bandpic {
 	max-width: 500px;
+}
+button:hover {
+    background-color: #ff0099; /* Neon Pink */
+    color: white;
+}
+button {
+    font-size: 24px;
+    margin: 10px;
+}
+#induction {
+	font-size: 18px;
 }

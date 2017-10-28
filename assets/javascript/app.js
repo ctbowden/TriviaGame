@@ -87,10 +87,6 @@ function runTime() {
 	intervalId = setInterval(countdown, 1000);
 }
 
-function pause() {
-	timer = 3;
-	intervalId = setInterval(buildQuizBoard, 1000)
-}
 
 // Function to provide countdown clock to trivia page 
 function countdown() {
@@ -112,7 +108,7 @@ function timesUp() {
 	//Empty the Div
 	$("#quiz").empty();
 	//Sorry Times Up Screen
-	$("#quiz").append('<img id="onLoss" src="assets/images/maxresdefault.jpg">');
+	// $("#quiz").append('<img id="onLoss" src="assets/images/maxresdefault.jpg">');
 	// Prototype Times up
 	$("#quiz").append('<img src="https://media.giphy.com/media/2DpXJzoZ14aVW/giphy.gif">')
 	// Increase the Unanswered Questions total
@@ -202,4 +198,21 @@ function results() {
 	$("#quiz").append("<h2>Wrong Answers:  " + wrong + "</h2>");
 	//Number of Questions Unanswered
 	$("#quiz").append("<h2>Unanswered Questions:  " + unanswered + "</h2>");
+	//Create Button to play again
+	$("#quiz").append("<button>Play Again?</button>");
+	//Button Clickable to restart game
+	$("button").on("click", function(event) {
+		restart();
+	});
+}
+
+function restart() {
+	// reset the index to 0 to manage questions from array
+	index = 0;
+	// reset the scores
+	correct = 0;
+	wrong = 0;
+	unanswered = 0;
+	// load first quiz question
+	buildQuizBoard();
 }
